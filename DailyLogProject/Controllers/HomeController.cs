@@ -45,8 +45,12 @@ namespace DailyLogProject.Controllers
                 //Bağlantımı Açıyorum SQL Tablosuna
                 con.Open();
                 com.Connection = con;
+                //Aşağıdaki kodla ' gibi karakterlerde hata almamıza yarıyor.
+                var prm1 = new SqlParameter("", System.Data.SqlDbType.NVarChar);
+                prm1.Value = "";
+                com.Parameters.Add(prm1);
                 //Kodumuz SQL Tablosuna kayıt eklemesi için yapması gereken kodu yazıyoruz "" içerisinde ki kod
-                com.CommandText = $"Insert into [KumportMert].[dbo].[DailyLog](Title,Descrip) values ('{model.AddressData.Title}','{model.AddressData.Descrip}')";
+                com.CommandText = $"Insert into [KumportMert].[dbo].[DailyLog](Title,Descrip) values ('{model.AddressData.Title.Replace("'","''")}','{model.AddressData.Descrip.Replace("'","''")}')";
                 var x = com.ExecuteNonQuery();
 
                 con.Close();

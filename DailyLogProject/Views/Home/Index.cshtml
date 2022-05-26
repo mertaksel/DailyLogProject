@@ -5,17 +5,21 @@
 <form method="post" action="/Home/Index">
     <div class="form-group">
         <label for="HeaderTitle">Başlık</label>
-        <input asp-for="AddressData.Title" type="text" class="form-control" required id="HeaderTitle"/>
+        <input asp-for="AddressData.Title" type="text" class="form-control" required id="HeaderTitle" placeholder="Lorem İpsum" />
         <label for="DescriptionTitle">Açıklama</label>
-        <textarea asp-for="AddressData.Descrip" required class="form-control" id="DescriptionTitle" rows="5"></textarea>
+        <textarea asp-for="AddressData.Descrip" required class="form-control" id="DescriptionTitle" rows="5" placeholder="Lorem Ipsum is simply dummy text of the printing and typesetting industry."></textarea>
     </div>
     <button type="submit" class="btn btn-primary" id="ButtonKayit">Kayıt</button>
 </form>
+<br /><br />
 @*Kayıtları çağırdığımız yer*@
-<div class="table">
-    <table class="table table-bordered table-hover">
+<div style="height: 350px; overflow: scroll; width: 1120px;" class="table">
+    <table class="table table-bordered table-hover" ;">
         <thead>
             <tr>
+                <th>
+                    Seçim
+                </th>
                 <th>
                     Başlık
                 </th>
@@ -31,19 +35,20 @@
                 if (Model != null && Model.AddressList != null && Model.AddressList.Count > 0)
                 {
                     foreach (var item in Model.AddressList)
-                    { 
+                    {
                         //AddressList Modelinden itemleri title descripleri ekranda tablo olarak gösteriyor.
-                        <tr>                       
+                        <tr>
+                            <td><input type="checkbox"td>
                             <td>@item.Title</td>
                             <td>@item.Descrip</td>
                         </tr>
+
                     }
+
                 }
             }
+
         </tbody>
-    </table>
-
-
-
-
+    </table>    
 </div>
+                       <button type="submit" class="btn btn-primary" id="ButtonKayit">Çıkar</button>
