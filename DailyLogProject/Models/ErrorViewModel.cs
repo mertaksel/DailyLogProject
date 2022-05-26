@@ -8,7 +8,8 @@ namespace DailyLogProject.Models
 
         public string HeaderTitle { get; set; }
 
-        public string CommentTitle { get; set; }   
+        public string DescriptionTitle { get; set; }   
+        public string ButtonKayit { get; set; }
 
         public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
     }

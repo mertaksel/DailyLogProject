@@ -1,16 +1,49 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
-<form>
+﻿@model IndexViewModel;
 
+
+@*Kayıt eklememiz için form*@
+<form method="post" action="/Home/Index">
     <div class="form-group">
         <label for="HeaderTitle">Başlık</label>
-        
-
+        <input asp-for="AddressData.Title" type="text" class="form-control" required id="HeaderTitle"/>
+        <label for="DescriptionTitle">Açıklama</label>
+        <textarea asp-for="AddressData.Descrip" required class="form-control" id="DescriptionTitle" rows="5"></textarea>
     </div>
-
-
-
-
-
+    <button type="submit" class="btn btn-primary" id="ButtonKayit">Kayıt</button>
 </form>
+@*Kayıtları çağırdığımız yer*@
+<div class="table">
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>
+                    Başlık
+                </th>
+                <th>
+                    Açıklama
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @{
+                //Modelimiz boş değilse ekranda gösteriyor.
+                if (Model != null && Model.AddressList != null && Model.AddressList.Count > 0)
+                {
+                    foreach (var item in Model.AddressList)
+                    { 
+                        //AddressList Modelinden itemleri title descripleri ekranda tablo olarak gösteriyor.
+                        <tr>                       
+                            <td>@item.Title</td>
+                            <td>@item.Descrip</td>
+                        </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
+
+
+
+
+</div>
