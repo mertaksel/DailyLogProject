@@ -50,7 +50,7 @@ namespace DailyLogProject.Controllers
                 prm1.Value = "";
                 com.Parameters.Add(prm1);
                 //Kodumuz SQL Tablosuna kayıt eklemesi için yapması gereken kodu yazıyoruz "" içerisinde ki kod
-                com.CommandText = $"Insert into [KumportMert].[dbo].[DailyLog](MakeDate,Title,Descrip) values ('{model.AddressData.MakeDate.Replace("'","'")}','{model.AddressData.Title.Replace("'","''")}','{model.AddressData.Descrip.Replace("'","''")}')";
+                com.CommandText = $"Insert into [KumportMert].[dbo].[DailyLog](Title,Descrip) values ('{model.AddressData.Title.Replace("'","''")}','{model.AddressData.Descrip.Replace("'","''")}')";
                 var x = com.ExecuteNonQuery();
 
                 con.Close();
