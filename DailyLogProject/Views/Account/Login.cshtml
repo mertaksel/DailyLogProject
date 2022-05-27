@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html>   
+
+<body>    
+    <form method="post", action="/Account/login">  
+        <div class="container">   
+            <label>Username : </label>   
+            <input type="text" class="form-control" placeholder="Enter Username" name="username" autocomplete="off" required>  
+            <label>Password : </label>   
+            <input type="password" class="form-control" placeholder="Enter Password" name="passw0rd"autocomplete="off" required><br />
+            <button type="submit" class="btn btn-primary">Login</button>      
+        </div>   
+    </form>    
+     @if (ViewBag.HataMesaji != null)
+    {
+        <h1>@ViewBag.HataMesaji</h1>
+    }
+</body>     
+</html>  

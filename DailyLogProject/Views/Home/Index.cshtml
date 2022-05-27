@@ -21,6 +21,9 @@
                     Seçim
                 </th>
                 <th>
+                    Oluşturulma Tarihi
+                </th>
+                <th>
                     Başlık
                 </th>
                 <th>
@@ -38,7 +41,8 @@
                     {
                         //AddressList Modelinden itemleri title descripleri ekranda tablo olarak gösteriyor.
                         <tr>
-                            <td><input type="checkbox"td>
+                            <td><input type="checkbox"td></td>
+                            <td>@item.MakeDate</td>                          
                             <td>@item.Title</td>
                             <td>@item.Descrip</td>
                         </tr>
@@ -51,4 +55,4 @@
         </tbody>
     </table>    
 </div>
-                       <button type="submit" class="btn btn-primary" id="ButtonKayit">Çıkar</button>
+ <button type="submit" class="btn btn-primary" id="ButtonKayit">Çıkar</button>

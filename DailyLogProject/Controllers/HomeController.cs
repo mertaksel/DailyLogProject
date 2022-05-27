@@ -50,7 +50,7 @@ namespace DailyLogProject.Controllers
                 prm1.Value = "";
                 com.Parameters.Add(prm1);
                 //Kodumuz SQL Tablosuna kayıt eklemesi için yapması gereken kodu yazıyoruz "" içerisinde ki kod
-                com.CommandText = $"Insert into [KumportMert].[dbo].[DailyLog](Title,Descrip) values ('{model.AddressData.Title.Replace("'","''")}','{model.AddressData.Descrip.Replace("'","''")}')";
+                com.CommandText = $"Insert into [KumportMert].[dbo].[DailyLog](MakeDate,Title,Descrip) values ('{model.AddressData.MakeDate.Replace("'","'")}','{model.AddressData.Title.Replace("'","''")}','{model.AddressData.Descrip.Replace("'","''")}')";
                 var x = com.ExecuteNonQuery();
 
                 con.Close();
@@ -63,23 +63,24 @@ namespace DailyLogProject.Controllers
             // Kayıt İşlemimiz tamamlandığında sayfamızda DBdeki değerler gösterilmesine yarıyor sayfayı refresh etmemize gerek kalmıyor.
             return RedirectToAction("Index", "Home");
         }
-        private List<Address> FetchAddresData()
+        private List<AddressViewModel> FetchAddresData()
         {
-            var addressList = new List<Address>();
+            var addressList = new List<AddressViewModel>();
             //Burası [HTTPGET] aslında Databaseden verileri çağırıyoruz(Database gidip verileri alıp geri getiriyoruz).
             try
             {
                 con.Open();
                 com.Connection = con;
-                com.CommandText = "SELECT TOP (1000) [Title],[Descrip] FROM [KumportMert].[dbo].[DailyLog]";
+                com.CommandText = "SELECT TOP (1000) [MakeDate], [Title],[Descrip] FROM [KumportMert].[dbo].[DailyLog] ORDER BY MakeDate DESC";
                 dr = com.ExecuteReader();
                 while (dr.Read())
                 {
-                    addressList.Add(new Address()
+                    addressList.Add(new AddressViewModel()
+
                     {
-                        Title = dr["Title"].ToString()
-                        ,
-                        Descrip = dr["Descrip"].ToString()
+                        MakeDate = dr["MakeDate"].ToString()
+                        ,Title = dr["Title"].ToString()                 
+                        ,Descrip = dr["Descrip"].ToString()
                     });
                 }
                 con.Close();

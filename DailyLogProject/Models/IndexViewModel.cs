@@ -4,7 +4,7 @@ namespace DailyLogProject.Models
 {
     public class IndexViewModel
     {
-        public Address AddressData { get; set; }
-        public List<Address> AddressList { get; set; }
+        public AddressViewModel AddressData { get; set; }
+        public List<AddressViewModel> AddressList { get; set; }
     }
 }
