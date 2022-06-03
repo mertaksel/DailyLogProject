@@ -1,17 +1,17 @@
 ﻿@model IndexViewModel;
 
-
 @*Kayıt eklememiz için form*@
 <form method="post" action="/Home/Index">
     <div class="form-group">
         <label for="HeaderTitle">Başlık</label>
-        <input asp-for="AddressData.Title" type="text" class="form-control" required id="HeaderTitle" placeholder="Lorem İpsum" />
+        <input asp-for="AddressData.Title" type="text" class="form-control" required id="HeaderTitle" autocomplete="off" placeholder="Lorem İpsum" />
         <label for="DescriptionTitle">Açıklama</label>
-        <textarea asp-for="AddressData.Descrip" required class="form-control" id="DescriptionTitle" rows="5" placeholder="Lorem Ipsum is simply dummy text of the printing and typesetting industry."></textarea>
+        <textarea asp-for="AddressData.Descrip" required class="form-control" autocomplete="off" id="DescriptionTitle" rows="5" placeholder="Lorem Ipsum is simply dummy text of the printing and typesetting industry."></textarea>
     </div>
     <button type="submit" class="btn btn-primary" id="ButtonKayit">Kayıt</button>
 </form>
-<br /><br />
+<br />
+<br />
 @*Kayıtları çağırdığımız yer*@
 <div style="height: 350px; overflow: scroll; width: 1120px;" class="table">
     <table class="table table-bordered table-hover" ;">
@@ -21,7 +21,7 @@
                     Seçim
                 </th>
                 <th>
-                    Oluşturulma Tarihi
+                    Yazılma Tarihi
                 </th>
                 <th>
                     Başlık
@@ -41,8 +41,8 @@
                     {
                         //AddressList Modelinden itemleri title descripleri ekranda tablo olarak gösteriyor.
                         <tr>
-                            <td><input type="checkbox"td></td>
-                            <td>@item.MakeDate</td>                          
+                            <td><input type="checkbox" td></td>
+                            <td>@item.MakeDate</td>
                             <td>@item.Title</td>
                             <td>@item.Descrip</td>
                         </tr>
@@ -51,8 +51,7 @@
 
                 }
             }
-
         </tbody>
-    </table>    
+    </table>
 </div>
- <button type="submit" class="btn btn-primary" id="ButtonKayit">Çıkar</button>
+<button type="submit" class="btn btn-primary" id="ButtonKayit">Çıkar</button>

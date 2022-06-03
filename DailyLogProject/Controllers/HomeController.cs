@@ -7,10 +7,13 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
-
+using Microsoft.AspNetCore.Session;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DailyLogProject.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         //SQL veritabanına gittiğimizde dataları kontrol etmek için ve benzeri işler için vericeğimiz sql kodlarını gidip dbye verileri alıyor geri bize getiriyor.
@@ -25,7 +28,7 @@ namespace DailyLogProject.Controllers
             _logger = logger;
             con.ConnectionString = DailyLogProject.Properties.Resources.ConnectionString;
         }
-
+       
         //Modele gidip Title ve Descrip datasına gidip getiriyor.
         public IActionResult Index()
         {
@@ -37,7 +40,6 @@ namespace DailyLogProject.Controllers
         }
         //HTTPPost Database'e kayıt eklememize yarıyor.
         [HttpPost]
-
         public IActionResult Index(IndexViewModel model)
         {
             try
@@ -56,12 +58,12 @@ namespace DailyLogProject.Controllers
                 con.Close();
             }
             // Kodda  hata durumunda bize hata fırlatmaya yarıyor.
-            catch (Exception ex)
+            catch (Exception )
             {
-                throw ex;
+                throw;
             }
             // Kayıt İşlemimiz tamamlandığında sayfamızda DBdeki değerler gösterilmesine yarıyor sayfayı refresh etmemize gerek kalmıyor.
-            return RedirectToAction("Index", "Home");
+            return View("Index", "Home");
         }
         private List<AddressViewModel> FetchAddresData()
         {
@@ -86,9 +88,9 @@ namespace DailyLogProject.Controllers
                 con.Close();
             }
             // Hata Fırlatıyoruz.
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw ;
             }
 
             return addressList;

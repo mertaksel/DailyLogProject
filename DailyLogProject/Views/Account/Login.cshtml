@@ -4,16 +4,17 @@
 <body>    
     <form method="post", action="/Account/login">  
         <div class="container">   
-            <label>Username : </label>   
-            <input type="text" class="form-control" placeholder="Enter Username" name="username" autocomplete="off" required>  
-            <label>Password : </label>   
-            <input type="password" class="form-control" placeholder="Enter Password" name="passw0rd"autocomplete="off" required><br />
-            <button type="submit" class="btn btn-primary">Login</button>      
+            <label>Kullanıcı Adı </label>   
+            <input type="text" class="form-control" placeholder="Kullanıcı Adınızı Giriniz" name="username" autocomplete="off" required>  
+            <label>Şifre </label>   
+            <input type="password" class="form-control" placeholder="Şifrenizi Giriniz" name="passw0rd"autocomplete="off" required><br />
+            <button type="submit" class="btn btn-primary">Giriş</button>      
         </div>   
     </form>    
      @if (ViewBag.HataMesaji != null)
-    {
-        <h1>@ViewBag.HataMesaji</h1>
+    {  
+        
+      <center><h1> @ViewBag.HataMesaji</h1></center> 
     }
 </body>     
 </html>  
